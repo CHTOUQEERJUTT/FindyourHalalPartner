@@ -19,12 +19,12 @@ import {
   FormLabel,
   FormControl,
   FormMessage,
-} from '@/components/ui/form'
+} from '@/app/components/ui/form'
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
-} from '@/components/ui/input-otp'
+} from '@/app/components/ui/input-otp'
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from 'input-otp'
 
 export default function VerificationPage() {

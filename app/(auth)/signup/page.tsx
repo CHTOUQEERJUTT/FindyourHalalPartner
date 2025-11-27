@@ -14,14 +14,16 @@ import { signUpSchema } from '@/src/schemas/signUpSchema'
 import { apiResponse } from '@/src/types/apiResponse'
 
 import { Button } from '@/components/ui/button'
-import {
-  Form,
+
+import { Form,
   FormField,
   FormItem,
   FormLabel,
   FormControl,
-  FormMessage,
-} from '@/components/ui/form'
+  FormMessage
+ } from '@/app/components/ui/form'
+
+
 import { Input } from '@/components/ui/input'
 
 // Simple SVG Icons for OAuth buttons (White background compatible)
