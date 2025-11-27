@@ -71,11 +71,13 @@ callbacks:{
       });
 
         // attach _id to user object (so jwt callback receives it)
-        user._id = newUser._id.toString();
+        user._id = String((newUser as any)._id);
+
         user.username = newUser.username;
         user.isVerified = true;
 } else {
-        user._id = existingUser._id.toString();
+        user._id = String((existingUser as any)._id);
+
         user.username = existingUser.username;
         user.isVerified = existingUser.isVerified;
 }
