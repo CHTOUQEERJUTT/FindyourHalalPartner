@@ -1,24 +1,35 @@
 'use client';
 
-import { Button } from '@/app/components/ui/button';
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/app/components/ui/form';
-import { Input } from '@/app/components/ui/input';
-import { messageSchema } from '@/src/schemas/messageSchema';
-import { zodResolver } from '@hookform/resolvers/zod';
+export const dynamic = "force-dynamic"; // ⭐ FIXES VERCEL ERROR
+
+import React, { useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import axios from 'axios';
 import { Loader2 } from 'lucide-react';
-import { useSearchParams } from 'next/navigation';
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { Form } from '@/app/components/ui/form';
-
 import { toast } from 'sonner';
+
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+
+import { messageSchema } from '@/src/schemas/messageSchema';
+
+import { Form } from '@/app/components/ui/form';
+import {
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+} from '@/app/components/ui/form';
+
+import { Input } from '@/app/components/ui/input';
+import { Button } from '@/components/ui/button';
 
 function Page() {
   const [isLoading, setIsLoading] = useState(false);
 
   const searchParams = useSearchParams();
-  const recipient = searchParams.get('recipient'); // ✅ same key
+  const recipient = searchParams.get('recipient');
 
   const form = useForm({
     resolver: zodResolver(messageSchema),
@@ -30,12 +41,11 @@ function Page() {
   const onSubmit = async (data: any) => {
     try {
       setIsLoading(true);
-      const response = await axios.post(`/api/sendMessage?recipient=${recipient}`, data);
-      toast.success(response.data.message);
-      console.log('✅ Message sent:', response.data.updatedUser);
-    } catch (error: any) {
-      console.error('❌ Error sending message:', error);
-      toast.error(error.response?.data?.message || 'Something went wrong');
+      const res = await axios.post(
+        `/api/sendMessage?recipient=${recipient}`,
+        data
+      );
+      toast.success(res.data.message);
     } finally {
       setIsLoading(false);
     }
@@ -59,7 +69,6 @@ function Page() {
                   <Input
                     placeholder="Write your message..."
                     {...field}
-                    className=" text-black bg-gray-50 border-gray-300 rounded-lg focus:ring-2 focus:ring-[#55efc4] focus:border-[#55efc4]"
                   />
                 </FormControl>
                 <FormMessage />
@@ -67,11 +76,7 @@ function Page() {
             )}
           />
 
-          <Button
-            type="submit"
-            disabled={isLoading}
-            className="w-full font-semibold bg-[#55efc4] text-black rounded-lg py-2.5 hover:bg-[#48d9b0] shadow-md transition-all disabled:opacity-50"
-          >
+          <Button type="submit" disabled={isLoading}>
             {isLoading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending...
