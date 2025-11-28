@@ -1,6 +1,6 @@
 // /app/layout.tsx
 
-import NavBar from '@/components/NavBar'; // Adjust path if necessary
+import NavBar from '@/app/components/NavBar'; // Adjust path if necessary
 import { Providers } from './providers'; // Example of wrapping with context/auth
 import './globals.css'; // Global styles
 
