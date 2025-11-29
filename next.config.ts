@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: "standalone",
+  reactStrictMode: true,
+
   images: {
     remotePatterns: [
       {
@@ -11,18 +14,17 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "lh3.googleusercontent.com",
       },
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+      },
     ],
   },
 
-  // Fix Vercel: ensures routes-manifest.json is generated
-  output: "standalone",
-
-  // Optional: allows bigger payloads for server actions (safe)
-  experimental: {
-    serverActions: {
-      bodySizeLimit: "2mb",
-    },
+  typescript: {
+    ignoreBuildErrors: false,
   },
+  
 };
 
 export default nextConfig;
