@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "app/(main)/updateprofile/page.jsx", "app/(main)/page.jsx"  ],
+, "app/(main)/updateprofile/page.jsx", "app/(main)/page.jsx", "next.config.mjs"  ],
   "exclude": ["node_modules"]
 }
