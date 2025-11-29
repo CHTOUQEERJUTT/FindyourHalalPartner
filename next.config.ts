@@ -1,9 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
   reactStrictMode: true,
-
+  output: "standalone", // must be standalone for Vercel
   images: {
     remotePatterns: [
       {
@@ -20,11 +19,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-
-  typescript: {
-    ignoreBuildErrors: false,
-  },
-  
 };
 
 export default nextConfig;
