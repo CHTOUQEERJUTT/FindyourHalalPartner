@@ -2,10 +2,26 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: [
-      "via.placeholder.com", // for placeholder image
-      "lh3.googleusercontent.com", // for Google profile images
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "via.placeholder.com",
+      },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+      },
     ],
+  },
+
+  // Fix Vercel: ensures routes-manifest.json is generated
+  output: "standalone",
+
+  // Optional: allows bigger payloads for server actions (safe)
+  experimental: {
+    serverActions: {
+      bodySizeLimit: "2mb",
+    },
   },
 };
 
