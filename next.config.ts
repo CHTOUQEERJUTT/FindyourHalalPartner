@@ -2,8 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  output: "standalone",
-  outputFileTracing: true,
+  // Remove output: "standalone" and outputFileTracing
   images: {
     remotePatterns: [
       {
