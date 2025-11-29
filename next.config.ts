@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  reactStrictMode: true, 
+  reactStrictMode: true,
+  output: "standalone",
+  outputFileTracing: true,
   images: {
     remotePatterns: [
       {
@@ -15,6 +17,5 @@ const nextConfig: NextConfig = {
     ],
   },
 };
-
 
 export default nextConfig;
