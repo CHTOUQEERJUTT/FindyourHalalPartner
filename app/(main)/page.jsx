@@ -17,7 +17,7 @@ const DEFAULT_FILTERS = {
     gender: 'Male',
     ageMin: 18,
     ageMax: 35,
-    interests: ['cricket'],
+    interests: [''],
     page: 1,
     limit: 8, 
 };
